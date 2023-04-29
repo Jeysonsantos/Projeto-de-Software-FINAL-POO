@@ -1,15 +1,33 @@
+package Main;
 
 import javax.swing.JOptionPane;
+
+import Menu.*;
+
 public class App {
     public static void main(String[] args){
+
+        
         OpcaoMenu[] opcoesMenu = {
             new MatricularAluno(),
             new RemoverPessoa(),
-            // e assim por diante para cada opção do menu
+            new AlterarDados(),
+            new MostrarInfo(),
+            new AdicionarProfessor(),
+            new AdicionarDisci(),
+            new RemoverDisci(),
         };
         
+
+        while(true){
         Object opcaoSelecionada = JOptionPane.showInputDialog(null, "Escolha uma opção:", "Opções", JOptionPane.INFORMATION_MESSAGE, null, opcoesMenu, opcoesMenu[0]);
-        ((OpcaoMenu) opcaoSelecionada).executar();
+        try {
+            ((OpcaoMenu) opcaoSelecionada).executar();
+        } catch (Exception nullPointerException) {
+            break;
+        }
+        
+        }
         
     }
 }
