@@ -70,7 +70,6 @@ public class Professor extends Pessoa{
         return opt_professors;
     }
     
-    @Override
     public void MostrarInfo()
     {
         JOptionPane.showMessageDialog(null,"Nome: " + this.nome + 

@@ -3,14 +3,17 @@ package Menu;
 import javax.swing.JOptionPane;
 
 import Main.Aluno;
+import Main.Sistema;
 
-public class MatricularAluno extends OpcaoMenu{
+public class MatricularAluno extends OpcaoMenu {
 
+    private Sistema sistema;
 
-    public MatricularAluno() {
+    public MatricularAluno(Sistema sistema) {
         super("Matricular Aluno");
+        this.sistema = sistema;
     }
-    
+
     @Override
     public void executar() {
         Aluno novoAluno = new Aluno();
@@ -19,9 +22,8 @@ public class MatricularAluno extends OpcaoMenu{
         novoAluno.setMatricula();
         novoAluno.setEmail();
         novoAluno.setCurso();
-        pes.setNumAlunos();
-        Alunos.add(novoAluno);
+        sistema.setNumAlunos();
+        sistema.adicionarAluno(novoAluno);
         JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso.");
-        
     }
 }

@@ -6,15 +6,14 @@ import Menu.*;
 
 public class App {
     public static void main(String[] args){
-
-        
+        Sistema sistema = new Sistema();
         OpcaoMenu[] opcoesMenu = {
-            new MatricularAluno(),
-            new RemoverPessoa(),
+            new MatricularAluno(sistema),
+            new RemoverPessoa(sistema),
             new AlterarDados(),
-            new MostrarInfo(),
-            new AdicionarProfessor(),
-            new AdicionarDisci(),
+            new MostrarInfo(sistema),
+            new AdicionarProfessor(sistema),
+            new AdicionarDisci(sistema),
             new RemoverDisci(),
         };
         

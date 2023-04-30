@@ -109,7 +109,6 @@ public class Aluno extends Pessoa{
         return opt_alunos;
     }
 
-    @Override
     public void MostrarInfo()
     {
         JOptionPane.showMessageDialog(null,"Nome: " + this.nome + 

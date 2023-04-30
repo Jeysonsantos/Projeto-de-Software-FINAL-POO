@@ -2,9 +2,14 @@ package Menu;
 
 import javax.swing.JOptionPane;
 
+import Main.Sistema;
+
 public class MostrarInfo extends OpcaoMenu {
-    public MostrarInfo(){
+    private Sistema sistema;
+
+    public MostrarInfo(Sistema sistema){
         super("Mostrar Informações");
+        this.sistema = sistema;
     }
 
     @Override
@@ -12,30 +17,11 @@ public class MostrarInfo extends OpcaoMenu {
         Object [] aluno_prof = {"ALUNO", "PROFESSOR","DADOS GERAIS"};
         Object op_aluno_prof = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, aluno_prof, aluno_prof[0]);
         if (op_aluno_prof == "ALUNO"){ 
-            Object opt_alunos = mat.ListagemAlunos(Alunos);
-            for(int i = 0; i < Pessoas.size(); i++)
-            {
-                if(opt_alunos == null) {break;}
-                else if(opt_alunos == Pessoas.get(i).getNome())
-                {
-                    Pessoas.get(i).MostrarInfo();
-                    break;
-                }
-            }    
+            sistema.getInfoAlunos();
         }else if(op_aluno_prof == "PROFESSOR"){
-            Object opt_professor = prof.ListagemProfessor(Professores);
-            for(int i = 0; i < Pessoas.size(); i++)
-            {
-                if(opt_professor == null) {break;}
-                else if(opt_professor == Pessoas.get(i).getNome())
-                {
-                    Pessoas.get(i).MostrarInfo();
-                    break;
-                }
-            }    
-        
+            sistema.getInfoProfessores();
         }else if(op_aluno_prof == "DADOS GERAIS"){
-            pes.MostrarInfo();
+            sistema.MostrarInfo();
         }
     }
     
