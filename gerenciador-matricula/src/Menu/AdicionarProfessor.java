@@ -7,6 +7,7 @@ import Main.Sistema;
 
 public class AdicionarProfessor extends OpcaoMenu {
     private Sistema sistema;
+    
     public AdicionarProfessor(Sistema sistema){
         super("Adicionar Professor");
         this.sistema = sistema;

@@ -10,11 +10,11 @@ public class App {
         OpcaoMenu[] opcoesMenu = {
             new MatricularAluno(sistema),
             new RemoverPessoa(sistema),
-            new AlterarDados(),
+            new AlterarDados(sistema),
             new MostrarInfo(sistema),
             new AdicionarProfessor(sistema),
             new AdicionarDisci(sistema),
-            new RemoverDisci(),
+            new RemoverDisci(sistema),
         };
         
 

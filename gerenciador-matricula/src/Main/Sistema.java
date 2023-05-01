@@ -33,15 +33,15 @@ public class Sistema{
     public void getInfoAlunos() {
         Aluno mat = new Aluno();
         Object opt_alunos = mat.ListagemAlunos(alunos);
-            for(int i = 0; i < alunos.size(); i++)
+        for(int i = 0; i < alunos.size(); i++)
+        {
+            if(opt_alunos == null) {break;}
+            else if(opt_alunos == alunos.get(i).getNome())
             {
-                if(opt_alunos == null) {break;}
-                else if(opt_alunos == alunos.get(i).getNome())
-                {
-                    alunos.get(i).MostrarInfo();
-                    break;
-                }
-            }    
+                alunos.get(i).MostrarInfo();
+                break;
+            }
+        }    
     }
 
     public void getInfoProfessores() {
@@ -127,6 +127,95 @@ public class Sistema{
                 }
             }    
     }
+    }
+    public void RemoverDisci(){
+        Aluno mat = new Aluno();
+        Object opt_alunos = mat.ListagemAlunos(alunos);
+        for(int i = 0; i < alunos.size(); i++)//navegar pelos alunos
+        {
+            if(opt_alunos == null) {break;}
+            else if(opt_alunos == alunos.get(i).getNome())
+            {
+                ArrayList<Disciplina> d  = alunos.get(i).getDici(); 
+                Object opt_d = alunos.get(i).ListagemDici(d);
+                if(d!=null){
+                    for(int j = 0; j < d.size(); j++)//navegar pelas disciplinas
+                    {
+                        if(opt_d == null) {break;}
+                        else if(opt_d == d.get(j).getNomeDisciplina())
+                        {
+                            d.remove(j);
+                            JOptionPane.showMessageDialog(null, "Disciplina removida com sucesso.");
+
+                            break;
+                        }
+                    }
+                }else{continue;}
+                break;
+            }
+        }
+    }
+    public void AlterarDados(){
+        Object [] aluno_prof = {"ALUNO", "PROFESSOR"};
+                Object op_aluno_prof = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, aluno_prof, aluno_prof[0]);
+                if(op_aluno_prof == "ALUNO"){
+                    Aluno mat = new Aluno();
+                    Object opt_alunos = mat.ListagemAlunos(alunos);
+                    for(int i = 0; i < alunos.size(); i++)
+                    {
+                        if(opt_alunos == null) {break;}
+                        else if(opt_alunos == alunos.get(i).getNome())
+                        {
+                            Object[] dados_aluno = {"Nome","CPF","Email","Número de Matricula","Disciplinas", "Curso"};
+                            Object dado_selecionado = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, dados_aluno,dados_aluno[0]);
+                            if(dado_selecionado == "Nome"){alunos.get(i).resetNome();}
+                            else if(dado_selecionado == "CPF"){alunos.get(i).resetCPF();}
+                            else if(dado_selecionado == "Email"){alunos.get(i).resetEmail();}
+                            else if(dado_selecionado == "Número de Matricula"){alunos.get(i).resetMatricula();}
+                            else if(dado_selecionado == "Curso"){alunos.get(i).resetCurso();}
+                            else if(dado_selecionado == "Disciplinas")
+                            {
+                                ArrayList<Disciplina> d  = alunos.get(i).getDici();
+                                Object opt_d = alunos.get(i).ListagemDici(d);                                
+                                for(int j = 0; j < d.size(); j++)//navegar pelas disciplinas
+                                {
+                                    if(opt_d == null) {break;}
+                                    else if(opt_d == d.get(j).getNomeDisciplina())
+                                    {
+                                        Object[] opcoes = {"Nome da disciplina", "Professor responsável", "Nota"};
+                                        Object opcaoSelecionada = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[0]);
+                                        if(opcaoSelecionada == "Nome da disciplina"){d.get(j).resetNomeDisciplina();}
+                                        else if(opcaoSelecionada == "Nota"){d.get(j).resetNota();}
+                                        else if(opcaoSelecionada == "Professor responsável"){d.get(j).setProfessor(professores);}
+                                        break;
+                                    }
+                                }   
+                            }
+                            JOptionPane.showMessageDialog(null, "Dados Atualizados com sucesso.");
+
+                            break;
+                        }
+                    }  
+                }
+                else if(op_aluno_prof == "PROFESSOR"){
+                    Professor prof = new Professor();
+                    Object opt_prof = prof.ListagemProfessor(professores);
+                    for(int i = 0; i < professores.size(); i++)
+                    {
+                        if(opt_prof == null) {break;}
+                        else if(opt_prof == professores.get(i).getNome())
+                        {
+                            Object[] dados_prof = {"Nome","CPF","Email","Salário", "Formação acadêmica"};
+                            Object dado_selecionado = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, dados_prof,dados_prof[0]);
+                            if(dado_selecionado == "Nome"){professores.get(i).resetNome();}
+                            else if(dado_selecionado == "CPF"){professores.get(i).resetCPF();}
+                            else if(dado_selecionado == "Email"){professores.get(i).resetEmail();}
+                            else if(dado_selecionado == "Salário"){professores.get(i).resetSalario();}
+                            else if(dado_selecionado == "Formação acadêmica"){professores.get(i).resetFormacaoAcademica();}
+                            break;
+                        }
+                    }
+                }
     }
 }
     

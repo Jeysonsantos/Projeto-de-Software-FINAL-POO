@@ -58,20 +58,35 @@ public class Aluno extends Pessoa{
 
         Object[] options = {1,2,3,4,5,6,7,8,9};
         Object op = JOptionPane.showInputDialog(null,"Escolha quantas disciplinas deseja cadastrar:","Opções",JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-        ArrayList<Disciplina> disci = new ArrayList<Disciplina>();
         if(op==null){return;}
         else{
             int opint = op.hashCode();
-            for(int i=0;i<opint;i++)
-            {
-                Disciplina disciplina= new Disciplina();
-                disciplina.setNomeDisciplina();
-                disciplina.setNota();
-                disciplina.setProfessor(Professores);
-                disci.add(disciplina);
-
-            }
             if(this.disciplinas != null){
+                for(int i=0;i<opint;i++)
+                {
+                    Disciplina disciplina= new Disciplina();
+                    disciplina.setNomeDisciplina();
+                    disciplina.setNota();
+                    disciplina.setProfessor(Professores);
+                    this.disciplinas.add(disciplina);
+                    if(this.disciplinas.size() >= 9)
+                    {
+                        JOptionPane.showMessageDialog(null,"O número máximo de disciplinas já foi alcançado !");
+                        break;
+                    }
+                }
+            }
+            else{
+                ArrayList<Disciplina> discip = new ArrayList<Disciplina>();
+                for(int i=0;i<opint;i++)
+                {
+                    Disciplina disciplina= new Disciplina();
+                    disciplina.setNomeDisciplina();
+                    disciplina.setNota();
+                    disciplina.setProfessor(Professores);
+                    discip.add(disciplina);
+                }
+                this.disciplinas = discip;
             }
         }
     }

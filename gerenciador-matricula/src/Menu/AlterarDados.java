@@ -1,12 +1,17 @@
 package Menu;
 
+import Main.Sistema;
+
 public class AlterarDados extends OpcaoMenu{
-    public AlterarDados(){
+    private Sistema sistema;
+
+    public AlterarDados(Sistema sistema){
         super("Alterar Dados");
+        this.sistema = sistema;
     }
 
     @Override
     public void executar() {
-        
+        sistema.AlterarDados();
     }
 }   
