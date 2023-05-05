@@ -8,6 +8,6 @@ public interface EstadoSistema {
     void MenuAlteracaoDados(Sistema sistema);
     void MenuInformacoes(Sistema sistema);
     void MenuAdicaoProfessor(Sistema sistema);
-    void MenuAdicaoDisciplina();
-    void MenuRemocaoDisciplina();
+    void MenuAdicaoDisciplina(Sistema sistema);
+    void MenuRemocaoDisciplina(Sistema sistema);
 }

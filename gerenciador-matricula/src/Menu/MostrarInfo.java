@@ -1,7 +1,5 @@
 package Menu;
 
-import javax.swing.JOptionPane;
-
 import Estados.EstadoSistema;
 import Main.Sistema;
 

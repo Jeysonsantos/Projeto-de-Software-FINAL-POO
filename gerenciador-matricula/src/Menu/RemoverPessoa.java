@@ -27,9 +27,9 @@ public class RemoverPessoa extends OpcaoMenu{
         Object opalunoprof = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, alunoprof, alunoprof[0]);
 
         if(opalunoprof=="ALUNO"){
-            sistema.escolherAluno();  
+            sistema.ExcluirAluno();  
         }else if(opalunoprof=="PROFESSOR"){
-            sistema.escolherProf();
+            sistema.ExcluirProf();
         }
         
     }

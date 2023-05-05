@@ -10,15 +10,15 @@ public class App {
     
     public static void main(String[] args){
         Sistema sistema = new Sistema();
-        EstadoSistema estado = new EstadoMatricula();
+        EstadoSistema estadoInicial = new EstadoMatricula();
         OpcaoMenu[] opcoesMenu = {
-            new MatricularAluno(sistema,estado),
-            new RemoverPessoa(sistema,estado),
-            new AlterarDados(sistema),
-            new MostrarInfo(sistema, estado),
-            new AdicionarProfessor(sistema, estado),
-            new AdicionarDisci(sistema),
-            new RemoverDisci(sistema),
+            new MatricularAluno(sistema,estadoInicial),
+            new RemoverPessoa(sistema,estadoInicial),
+            new AlterarDados(sistema,estadoInicial),
+            new MostrarInfo(sistema, estadoInicial),
+            new AdicionarProfessor(sistema, estadoInicial),
+            new AdicionarDisci(sistema, estadoInicial),
+            new RemoverDisci(sistema, estadoInicial),
         };
         
         while(true){

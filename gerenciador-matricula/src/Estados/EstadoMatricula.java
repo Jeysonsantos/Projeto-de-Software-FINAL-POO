@@ -8,6 +8,7 @@ import Main.Sistema;
 
 public class EstadoMatricula implements EstadoSistema{
 
+    
     @Override
     public void MenuMatricula(Sistema sistema) {
         Aluno novoAluno = new Aluno();
@@ -54,8 +55,11 @@ public class EstadoMatricula implements EstadoSistema{
     }
 
     @Override
-    public void MenuAdicaoDisciplina() {}
-
+    public void MenuAdicaoDisciplina(Sistema sistema) {
+        JOptionPane.showMessageDialog(null, "Necessário realizar cadastro de um aluno ou professor.");
+    }
     @Override
-    public void MenuRemocaoDisciplina() {}
+    public void MenuRemocaoDisciplina(Sistema sistema) {
+        JOptionPane.showMessageDialog(null, "Necessário realizar cadastro de disciplinas.");
+    }
 }
