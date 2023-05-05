@@ -1,29 +1,21 @@
 package Menu;
 
-import javax.swing.JOptionPane;
-
-import Main.Aluno;
+import Estados.EstadoSistema;
 import Main.Sistema;
 
 public class MatricularAluno extends OpcaoMenu {
 
     private Sistema sistema;
+    private EstadoSistema estado;
 
-    public MatricularAluno(Sistema sistema) {
+    public MatricularAluno(Sistema sistema, EstadoSistema estado) {
         super("Matricular Aluno");
         this.sistema = sistema;
+        this.estado = estado;
     }
 
     @Override
     public void executar() {
-        Aluno novoAluno = new Aluno();
-        novoAluno.setNome();
-        novoAluno.setCPF();
-        novoAluno.setMatricula();
-        novoAluno.setEmail();
-        novoAluno.setCurso();
-        sistema.setNumAlunos();
-        sistema.adicionarAluno(novoAluno);
-        JOptionPane.showMessageDialog(null, "Aluno cadastrado com sucesso.");
+        estado.MenuMatricula(sistema);
     }
 }

@@ -22,13 +22,9 @@ public class Sistema{
     public void setNumProf(){this.num_professores=this.num_professores+1;}
     public void delNumProf(){this.num_professores=this.num_professores-1;}
 
-    public void adicionarAluno(Aluno aluno) {
-        this.alunos.add(aluno);
-    }
+    public void AddAluno(Aluno aluno) {this.alunos.add(aluno);}
 
-    public void adicionarProfessor(Professor professor) {
-        this.professores.add(professor);
-    }
+    public void adicionarProfessor(Professor professor) {this.professores.add(professor);}
     
     public void getInfoAlunos() {
         Aluno mat = new Aluno();
@@ -43,7 +39,7 @@ public class Sistema{
             }
         }    
     }
-
+    
     public void getInfoProfessores() {
         Professor prof = new Professor();
         Object opt_professor = prof.ListagemProfessor(professores);
