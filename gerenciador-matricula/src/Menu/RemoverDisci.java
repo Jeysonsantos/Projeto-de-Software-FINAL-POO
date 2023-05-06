@@ -18,7 +18,9 @@ public class RemoverDisci extends OpcaoMenu{
     }
 
     @Override
-    public void mudarEstado(TransicaoEstados transicaoEstados){};
+    public void mudarEstado(TransicaoEstados transicaoEstados){
+        transicaoEstados.DisciRemovida();
+    };
     
 
 }

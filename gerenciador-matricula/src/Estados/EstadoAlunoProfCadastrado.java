@@ -1,7 +1,5 @@
 package Estados;
 
-import java.util.concurrent.ExecutionException;
-
 import javax.swing.JOptionPane;
 
 import Main.Aluno;
@@ -9,10 +7,10 @@ import Main.Professor;
 import Main.Sistema;
 import Main.Utilidade;
 
-public class EstadoMatricula implements EstadoSistema{
+public class EstadoAlunoProfCadastrado implements EstadoSistema{
     private Sistema sistema;
 
-    public EstadoMatricula(Sistema sistema){
+    public EstadoAlunoProfCadastrado(Sistema sistema){
 
         this.sistema = sistema;
     }
@@ -81,21 +79,44 @@ public class EstadoMatricula implements EstadoSistema{
     }
 
     @Override
-    public void MenuRemocaoPessoa() { // Nao consigo nesse estado, pois nao tem aluno ou professor cadastrado
-        JOptionPane.showMessageDialog(null, "Necessário realizar cadastro de um aluno ou professor.");
+    public void MenuRemocaoPessoa() {
+        Object [] opcoes = {"ALUNO", "PROFESSOR"};
+        Object opalunoprof = Utilidade.aluno_prof(opcoes);
+
+        if(opalunoprof=="PROFESSOR"){
+            sistema.ExcluirProf();
+        }else if(opalunoprof=="ALUNO"){
+            sistema.ExcluirAluno();
+        }else{
+            return;
+        }
     }
 
     @Override
-    public void MenuAlteracaoDados() { // Nao consigo nesse estado, pois nao tem aluno ou professor cadastrado
-        JOptionPane.showMessageDialog(null, "Necessário realizar cadastro de um aluno ou professor.");
+    public void MenuAlteracaoDados() {
+        Object [] opcoes = {"ALUNO", "PROFESSOR"};
+        Object op_aluno_prof = Utilidade.aluno_prof(opcoes);
+        if (op_aluno_prof == "ALUNO"){ 
+            sistema.AlterarDadosAluno();
+        }else if(op_aluno_prof == "PROFESSOR"){
+            sistema.AlterarDadosProfessor();
+        }else{
+            return;
+        }
     }
 
     @Override
     public void MenuInformacoes() {
-        Object [] opcoes = {"DADOS GERAIS"};
-        Object op = Utilidade.aluno_prof(opcoes);
-        if(op == "DADOS GERAIS"){
+        Object [] opcoes = {"ALUNO", "PROFESSOR","DADOS GERAIS"};
+        Object op_aluno_prof = Utilidade.aluno_prof(opcoes);
+        if (op_aluno_prof == "ALUNO"){ 
+            sistema.getInfoAlunos();
+        }else if(op_aluno_prof == "PROFESSOR"){
+            sistema.getInfoProfessores();
+        }else if(op_aluno_prof == "DADOS GERAIS"){
             sistema.MostrarInfo();
+        }else{
+            return;
         }
     }
 
@@ -141,11 +162,12 @@ public class EstadoMatricula implements EstadoSistema{
     }
 
     @Override
-    public void MenuAdicaoDisciplina() { // Nao consigo nesse estado, pois nao tem aluno ou professor cadastrado
-        JOptionPane.showMessageDialog(null, "Necessário realizar cadastro de um aluno ou professor.");
+    public void MenuAdicaoDisciplina() {
+        sistema.adicionarDici();
     }
+
     @Override
-    public void MenuRemocaoDisciplina() { // Nao consigo nesse estado, pois nao tem aluno ou professor cadastrado
+    public void MenuRemocaoDisciplina() { // Nao consigo nesse estado
         JOptionPane.showMessageDialog(null, "Necessário realizar cadastro de disciplinas.");
     }
 }

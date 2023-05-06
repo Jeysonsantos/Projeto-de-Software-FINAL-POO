@@ -17,22 +17,8 @@ public class Aluno extends Pessoa{
     public ArrayList<Disciplina> getDici(){return this.disciplinas;}
     
     
-    public void setMatricula(){
-        Integer numero = null;
-        while (numero == null) {
-            String input = JOptionPane.showInputDialog("Numero de matricula do aluno");
-            if (input == null) {
-                this.matricula = 0;
-                break;
-            }
-            try {
-                numero = Integer.parseInt(input);
-                this.matricula = numero;
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Por favor, insira um número inteiro válido.");
-            }
-        }
-    }
+    public void setMatricula(Integer matricula){this.matricula = matricula;}
+    
     public void resetMatricula(){
         Integer numero = null;
         while (numero == null) {
@@ -50,7 +36,7 @@ public class Aluno extends Pessoa{
         }
     }
 
-    public void setCurso(){this.curso = JOptionPane.showInputDialog(null,"Curso");}
+    public void setCurso(String curso){this.curso = curso;}
     public void resetCurso(){this.curso = JOptionPane.showInputDialog(null,"Curso",getCurso());}
 
     

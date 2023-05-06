@@ -1,6 +1,5 @@
 package Menu;
 
-
 import Estados.EstadoSistema;
 import Estados.TransicaoEstados;
 import Main.Sistema;
@@ -11,7 +10,6 @@ public class AdicionarProfessor extends OpcaoMenu {
     public AdicionarProfessor(Sistema sistema, EstadoSistema estado){
         super("Adicionar Professor");
         this.estado = estado;
-
     }
 
     @Override
@@ -20,5 +18,7 @@ public class AdicionarProfessor extends OpcaoMenu {
     }
 
     @Override
-    public void mudarEstado(TransicaoEstados transicaoEstados){};
+    public void mudarEstado(TransicaoEstados transicaoEstados){
+        transicaoEstados.ProfessorCadastrado();
+    };
 }

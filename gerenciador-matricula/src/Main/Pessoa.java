@@ -3,49 +3,37 @@ import javax.swing.JOptionPane;
 
 public class Pessoa{
     public String nome;
-    public int cpf;
+    public String cpf;
     public String email;
 
     public String getNome(){return this.nome;}
-    public int getCpf(){return this.cpf;}
+    public String getCpf(){return this.cpf;}
     public String getEmail(){return this.email;}
 
-    public void setNome(){this.nome = JOptionPane.showInputDialog("Nome");}
+    public void setNome(String nome){this.nome = nome;}
+    public void setEmail(String email){this.email = email;}
+    public void setCPF(String cpf){this.cpf = cpf;}
+
+    
     public void resetNome(){this.nome = JOptionPane.showInputDialog("Nome",getNome());}
-    public void setCPF(){
-        Integer numero = null;
-        while (numero == null) {
-            String input = JOptionPane.showInputDialog("CPF:");
-            if (input == null) {
-                this.cpf = 0;
-                break;
-            }
-            try {
-                numero = Integer.parseInt(input);
-                this.cpf = numero;
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Por favor, insira um número inteiro válido.");
-            }
-        }
-    }
+    
     public void resetCPF(){
         
-        Integer numero = null;
-        while (numero == null) {
-            String input = JOptionPane.showInputDialog("CPF",getCpf());
+        String cpf = null;
+        while (cpf == null) {
+            String input = JOptionPane.showInputDialog("Digite o CPF do aluno:",getCpf());
             if (input == null) {
-                this.cpf = getCpf();
                 break;
             }
-            try {
-                numero = Integer.parseInt(input);
-                this.cpf = numero;
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Por favor, insira um número inteiro válido.");
+            if (input.matches("\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}")) {
+                cpf = input;
+                setCPF(cpf);
+            } else {
+                JOptionPane.showMessageDialog(null, "Por favor, insira um CPF válido no formato xxx.xxx.xxx-xx.");
             }
         }
     }
-    public void setEmail(){this.email = JOptionPane.showInputDialog("Email");}
+    
     public void resetEmail(){this.email = JOptionPane.showInputDialog("Email",getEmail());}
 
 }

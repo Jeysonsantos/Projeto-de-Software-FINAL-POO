@@ -40,6 +40,15 @@ public class Sistema{
         }    
     }
     
+    public boolean verificarExisteDisci(){
+        for(int i=0;i<this.alunos.size();i++){
+            if(this.alunos.get(i).disciplinas.size()!=0){
+                return true;
+            }
+        }return false;
+    }
+
+
     public void getInfoProfessores() {
         Professor prof = new Professor();
         Object opt_professor = prof.ListagemProfessor(professores);
@@ -135,7 +144,7 @@ public class Sistema{
                 ArrayList<Disciplina> d  = alunos.get(i).getDici(); 
                 Object opt_d = alunos.get(i).ListagemDici(d);
                 if(d!=null){
-                    for(int j = 0; j < d.size(); j++)//navegar pelas disciplinas
+                    for(int j = 0; j < d.size(); j++)
                     {
                         if(opt_d == null) {break;}
                         else if(opt_d == d.get(j).getNomeDisciplina())
@@ -170,7 +179,7 @@ public class Sistema{
                 {
                     ArrayList<Disciplina> d  = alunos.get(i).getDici();
                     Object opt_d = alunos.get(i).ListagemDici(d);                                
-                    for(int j = 0; j < d.size(); j++)//navegar pelas disciplinas
+                    for(int j = 0; j < d.size(); j++)
                     {
                         if(opt_d == null) {break;}
                         else if(opt_d == d.get(j).getNomeDisciplina())

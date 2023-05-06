@@ -20,14 +20,18 @@ public class App {
                 new AdicionarDisci(sistema, transicaoEstados.getEstadoAtual()),
                 new RemoverDisci(sistema, transicaoEstados.getEstadoAtual()),
             };
+
             Object opcaoSelecionada = JOptionPane.showInputDialog(null, "Escolha uma opção:", "Opções", JOptionPane.INFORMATION_MESSAGE, null, opcoesMenu, opcoesMenu[0]);
-            
+            if(opcaoSelecionada == null) break;
+
             try {
                 ((OpcaoMenu) opcaoSelecionada).executar();
                 ((OpcaoMenu) opcaoSelecionada).mudarEstado(transicaoEstados);
             } catch (Exception nullPointerException) {
-                break;
+                continue;
             }
+            
+ 
         }
     }
 }

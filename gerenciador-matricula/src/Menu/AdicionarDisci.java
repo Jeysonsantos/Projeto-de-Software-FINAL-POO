@@ -18,5 +18,7 @@ public class AdicionarDisci extends OpcaoMenu {
     }
 
     @Override
-    public void mudarEstado(TransicaoEstados transicaoEstados){};
+    public void mudarEstado(TransicaoEstados transicaoEstados){
+        transicaoEstados.DisciCadastrada();
+    };
 }

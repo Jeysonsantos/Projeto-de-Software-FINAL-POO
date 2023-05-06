@@ -1,8 +1,7 @@
 package Estados;
 
-import javax.swing.JOptionPane;
-
 import Main.Sistema;
+import Main.Utilidade;
 
 public class EstadoProfeCadastrado extends EstadoMatricula{
     private Sistema sistema;
@@ -15,8 +14,8 @@ public class EstadoProfeCadastrado extends EstadoMatricula{
 
     @Override
     public void MenuInformacoes() {
-        Object [] aluno_prof = {"PROFESSOR","DADOS GERAIS"};
-        Object op_aluno_prof = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, aluno_prof, aluno_prof[0]);
+        Object [] opcoes = {"PROFESSOR","DADOS GERAIS"};
+        Object op_aluno_prof = Utilidade.aluno_prof(opcoes);
         if (op_aluno_prof == "PROFESSOR"){ 
             sistema.getInfoProfessores();
         }else if(op_aluno_prof == "DADOS GERAIS"){
@@ -26,8 +25,8 @@ public class EstadoProfeCadastrado extends EstadoMatricula{
 
     @Override
     public void MenuRemocaoPessoa() {
-        Object [] alunoprof = {"PROFESSOR"};
-        Object opalunoprof = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, alunoprof, alunoprof[0]);
+        Object [] opcoes = {"PROFESSOR"};
+        Object opalunoprof = Utilidade.aluno_prof(opcoes);
 
         if(opalunoprof=="PROFESSOR"){
             sistema.ExcluirProf();
@@ -36,8 +35,8 @@ public class EstadoProfeCadastrado extends EstadoMatricula{
 
     @Override
     public void MenuAlteracaoDados() {
-        Object [] aluno_prof = {"PROFESSOR"};
-        Object op_aluno_prof = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, aluno_prof, aluno_prof[0]);
+        Object [] opcoes = {"PROFESSOR"};
+        Object op_aluno_prof = Utilidade.aluno_prof(opcoes);
 
         if(op_aluno_prof=="PROFESSOR"){
             sistema.AlterarDadosProfessor();

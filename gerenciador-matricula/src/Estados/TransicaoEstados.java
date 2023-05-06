@@ -14,8 +14,56 @@ public class TransicaoEstados{
         return estadoAtual;
     }
     public void AlunoCadastrado() {
-        EstadoAlunoCadastrado estado = new EstadoAlunoCadastrado(sistema);
-        this.estadoAtual = estado;
+        if(sistema.getnum_Professores()!=0){
+            EstadoAlunoProfCadastrado estado = new EstadoAlunoProfCadastrado(sistema);
+            this.estadoAtual = estado;
+        }else{
+            EstadoAlunoCadastrado estado = new EstadoAlunoCadastrado(sistema);
+            this.estadoAtual = estado;
+        }
     }
+
+    public void ProfessorCadastrado() {
+        if(sistema.getnum_Alunos()!=0){
+            EstadoAlunoProfCadastrado estado = new EstadoAlunoProfCadastrado(sistema);
+            this.estadoAtual = estado;
+        }else{
+            EstadoProfeCadastrado estado = new EstadoProfeCadastrado(sistema);
+            this.estadoAtual = estado;
+        }
+    }
+
+    public void AlunoProfRemovido() {
+        if(sistema.getnum_Alunos()!=0 && sistema.getnum_Professores()!=0){
+            EstadoAlunoProfCadastrado estado = new EstadoAlunoProfCadastrado(sistema);
+            this.estadoAtual = estado;
+        }else if(sistema.getnum_Alunos()!=0){
+            EstadoAlunoCadastrado estado = new EstadoAlunoCadastrado(sistema);
+            this.estadoAtual = estado;
+        }else if(sistema.getnum_Professores()!=0){
+            EstadoProfeCadastrado estado = new EstadoProfeCadastrado(sistema);
+            this.estadoAtual = estado;}
+    }
+
+    public void DisciCadastrada(){
+        if(sistema.verificarExisteDisci()){
+            EstadoTotal estado = new EstadoTotal(sistema);
+            this.estadoAtual = estado;
+        }else{
+            EstadoAlunoProfCadastrado estado = new EstadoAlunoProfCadastrado(sistema);
+            this.estadoAtual = estado;
+        }
+    }
+
+    public void DisciRemovida(){
+        if(sistema.verificarExisteDisci()){
+            EstadoTotal estado = new EstadoTotal(sistema);
+            this.estadoAtual = estado;
+        }else{
+            EstadoAlunoProfCadastrado estado = new EstadoAlunoProfCadastrado(sistema);
+            this.estadoAtual = estado;
+        }
+    }
+
 }
 
