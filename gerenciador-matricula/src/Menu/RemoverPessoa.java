@@ -3,6 +3,7 @@ package Menu;
 import javax.swing.JOptionPane;
 
 import Estados.EstadoSistema;
+import Estados.TransicaoEstados;
 import Main.Sistema;
 
 public class RemoverPessoa extends OpcaoMenu{
@@ -18,8 +19,10 @@ public class RemoverPessoa extends OpcaoMenu{
     }
     @Override
     public void executar() {
-        estado.MenuRemocaoPessoa(sistema);
+        estado.MenuRemocaoPessoa();
     }
+    @Override
+    public void mudarEstado(TransicaoEstados transicaoEstados){};
 
     public void executar2() {
         

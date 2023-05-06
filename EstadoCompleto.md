@@ -1,5 +1,3 @@
-package Estados;
-
 public class EstadoCompleto {
     
     Object [] aluno_prof = {"ALUNO", "PROFESSOR","DADOS GERAIS"};
@@ -11,4 +9,4 @@ public class EstadoCompleto {
         }else if(op_aluno_prof == "DADOS GERAIS"){
             sistema.MostrarInfo();
         }
-}
+};

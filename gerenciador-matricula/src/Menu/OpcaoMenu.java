@@ -1,5 +1,6 @@
 package Menu;
 
+import Estados.TransicaoEstados;
 import Main.Aluno;
 import Main.Pessoa;
 import Main.Professor;
@@ -17,6 +18,7 @@ public abstract class OpcaoMenu{
     }
 
     public abstract void executar();
+    public abstract void mudarEstado(TransicaoEstados transicaoEstados);
 
     @Override
     public String toString() {

@@ -7,10 +7,15 @@ import Main.Professor;
 import Main.Sistema;
 
 public class EstadoMatricula implements EstadoSistema{
+    private Sistema sistema;
 
+    public EstadoMatricula(Sistema sistema){
+
+        this.sistema = sistema;
+    }
     
     @Override
-    public void MenuMatricula(Sistema sistema) {
+    public void MenuMatricula() {
         Aluno novoAluno = new Aluno();
         novoAluno.setNome();
         novoAluno.setCPF();
@@ -23,17 +28,17 @@ public class EstadoMatricula implements EstadoSistema{
     }
 
     @Override
-    public void MenuRemocaoPessoa(Sistema sistema) {
+    public void MenuRemocaoPessoa() {
         JOptionPane.showMessageDialog(null, "Necessário realizar cadastro de um aluno ou professor.");
     }
 
     @Override
-    public void MenuAlteracaoDados(Sistema sistema) {
+    public void MenuAlteracaoDados() {
         JOptionPane.showMessageDialog(null, "Necessário realizar cadastro de um aluno ou professor.");
     }
 
     @Override
-    public void MenuInformacoes(Sistema sistema) {
+    public void MenuInformacoes() {
         Object [] opcoes = {"DADOS GERAIS"};
         Object op = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[0]);
         if(op == "DADOS GERAIS"){
@@ -42,7 +47,7 @@ public class EstadoMatricula implements EstadoSistema{
     }
 
     @Override
-    public void MenuAdicaoProfessor(Sistema sistema) {
+    public void MenuAdicaoProfessor() {
         Professor novoProfessor = new Professor();
         novoProfessor.setNome();
         novoProfessor.setCPF();
@@ -55,11 +60,11 @@ public class EstadoMatricula implements EstadoSistema{
     }
 
     @Override
-    public void MenuAdicaoDisciplina(Sistema sistema) {
+    public void MenuAdicaoDisciplina() {
         JOptionPane.showMessageDialog(null, "Necessário realizar cadastro de um aluno ou professor.");
     }
     @Override
-    public void MenuRemocaoDisciplina(Sistema sistema) {
+    public void MenuRemocaoDisciplina() {
         JOptionPane.showMessageDialog(null, "Necessário realizar cadastro de disciplinas.");
     }
 }

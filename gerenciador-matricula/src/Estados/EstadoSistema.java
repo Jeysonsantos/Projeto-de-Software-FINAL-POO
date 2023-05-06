@@ -1,13 +1,11 @@
 package Estados;
 
-import Main.Sistema;
-
 public interface EstadoSistema {
-    void MenuMatricula(Sistema sistema);
-    void MenuRemocaoPessoa(Sistema sistema);
-    void MenuAlteracaoDados(Sistema sistema);
-    void MenuInformacoes(Sistema sistema);
-    void MenuAdicaoProfessor(Sistema sistema);
-    void MenuAdicaoDisciplina(Sistema sistema);
-    void MenuRemocaoDisciplina(Sistema sistema);
+    void MenuMatricula();
+    void MenuRemocaoPessoa();
+    void MenuAlteracaoDados();
+    void MenuInformacoes();
+    void MenuAdicaoProfessor();
+    void MenuAdicaoDisciplina();
+    void MenuRemocaoDisciplina();
 }

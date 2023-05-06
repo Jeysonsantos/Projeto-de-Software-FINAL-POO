@@ -1,21 +1,25 @@
 package Menu;
 
 import Estados.EstadoSistema;
+import Estados.TransicaoEstados;
 import Main.Sistema;
 
 public class MatricularAluno extends OpcaoMenu {
 
-    private Sistema sistema;
     private EstadoSistema estado;
 
     public MatricularAluno(Sistema sistema, EstadoSistema estado) {
         super("Matricular Aluno");
-        this.sistema = sistema;
         this.estado = estado;
     }
 
     @Override
     public void executar() {
-        estado.MenuMatricula(sistema);
+        estado.MenuMatricula();
     }
+
+    @Override
+    public void mudarEstado(TransicaoEstados transicaoEstados){
+        transicaoEstados.AlunoCadastrado();
+    };
 }
