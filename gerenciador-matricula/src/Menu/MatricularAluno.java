@@ -1,7 +1,6 @@
 package Menu;
 
 import Estados.EstadoSistema;
-import Estados.TransicaoEstados;
 import Main.Sistema;
 
 public class MatricularAluno extends OpcaoMenu {
@@ -17,9 +16,4 @@ public class MatricularAluno extends OpcaoMenu {
     public void executar() {
         estado.MenuMatricula();
     }
-
-    @Override
-    public void mudarEstado(TransicaoEstados transicaoEstados){
-        transicaoEstados.AlunoCadastrado();
-    };
 }

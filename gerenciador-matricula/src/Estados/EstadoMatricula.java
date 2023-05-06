@@ -1,7 +1,5 @@
 package Estados;
 
-import java.util.concurrent.ExecutionException;
-
 import javax.swing.JOptionPane;
 
 import Main.Aluno;

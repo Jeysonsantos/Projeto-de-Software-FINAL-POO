@@ -1,7 +1,6 @@
 package Menu;
 
 import Estados.EstadoSistema;
-import Estados.TransicaoEstados;
 import Main.Sistema;
 
 public class RemoverDisci extends OpcaoMenu{
@@ -16,11 +15,4 @@ public class RemoverDisci extends OpcaoMenu{
     public void executar() {
         estado.MenuRemocaoDisciplina();
     }
-
-    @Override
-    public void mudarEstado(TransicaoEstados transicaoEstados){
-        transicaoEstados.DisciRemovida();
-    };
-    
-
 }

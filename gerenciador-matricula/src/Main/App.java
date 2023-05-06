@@ -20,13 +20,14 @@ public class App {
                 new AdicionarDisci(sistema, transicaoEstados.getEstadoAtual()),
                 new RemoverDisci(sistema, transicaoEstados.getEstadoAtual()),
             };
-
+            System.out.println("Estado atual: " + transicaoEstados.getEstadoAtual().getClass().getSimpleName());
             Object opcaoSelecionada = JOptionPane.showInputDialog(null, "Escolha uma opção:", "Opções", JOptionPane.INFORMATION_MESSAGE, null, opcoesMenu, opcoesMenu[0]);
             if(opcaoSelecionada == null) break;
 
             try {
                 ((OpcaoMenu) opcaoSelecionada).executar();
-                ((OpcaoMenu) opcaoSelecionada).mudarEstado(transicaoEstados);
+                transicaoEstados.alterarEstado();
+                
             } catch (Exception nullPointerException) {
                 continue;
             }

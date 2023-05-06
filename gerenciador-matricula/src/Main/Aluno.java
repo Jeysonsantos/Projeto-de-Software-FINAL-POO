@@ -16,6 +16,10 @@ public class Aluno extends Pessoa{
     public String getEmail(){return this.email;}
     public ArrayList<Disciplina> getDici(){return this.disciplinas;}
     
+    @Override
+    public String toString(){
+        return getNome();
+    }
     
     public void setMatricula(Integer matricula){this.matricula = matricula;}
     
@@ -94,20 +98,6 @@ public class Aluno extends Pessoa{
             JOptionPane.showMessageDialog(null, "Ainda não existe Disciplinas Vinculadas a este aluno");
             return 0;
         }
-    }
-    public Object ListagemAlunos(ArrayList<Aluno> listAlun)
-    {
-        if(listAlun.size()==0){
-            JOptionPane.showMessageDialog(null, "Ainda não existe Alunos Cadastrados, acesse a opção MATRICULAR ALUNO para Cadastrar.");
-            return null;
-        }
-        Object[] al = new String[100] ;
-        for(int i = 0; i < listAlun.size(); i++)
-        {
-            al[i] = listAlun.get(i).nome;
-        }
-        Object opt_alunos = JOptionPane.showInputDialog(null,"Escolha um aluno","Alunos", JOptionPane.INFORMATION_MESSAGE, null, al, al[0]);
-        return opt_alunos;
     }
 
     public void MostrarInfo()

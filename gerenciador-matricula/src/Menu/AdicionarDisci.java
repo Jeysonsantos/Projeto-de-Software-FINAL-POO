@@ -1,7 +1,6 @@
 package Menu;
 
 import Estados.EstadoSistema;
-import Estados.TransicaoEstados;
 import Main.Sistema;
 
 public class AdicionarDisci extends OpcaoMenu {
@@ -16,9 +15,4 @@ public class AdicionarDisci extends OpcaoMenu {
     public void executar() {
         estado.MenuAdicaoDisciplina();
     }
-
-    @Override
-    public void mudarEstado(TransicaoEstados transicaoEstados){
-        transicaoEstados.DisciCadastrada();
-    };
 }

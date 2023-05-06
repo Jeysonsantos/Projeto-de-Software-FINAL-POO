@@ -1,7 +1,6 @@
 package Menu;
 
 import Estados.EstadoSistema;
-import Estados.TransicaoEstados;
 import Main.Sistema;
 
 public class AlterarDados extends OpcaoMenu{
@@ -16,7 +15,4 @@ public class AlterarDados extends OpcaoMenu{
     public void executar() {
         estado.MenuAlteracaoDados();
     }
-
-    @Override
-    public void mudarEstado(TransicaoEstados transicaoEstados){};
 }   

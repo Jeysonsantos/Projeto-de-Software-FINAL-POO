@@ -15,5 +15,4 @@ public class EstadoTotal extends EstadoAlunoProfCadastrado{
         sistema.RemoverDisci();
     }
 
-
 }

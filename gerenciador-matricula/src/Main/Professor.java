@@ -1,8 +1,6 @@
 package Main;
 import javax.swing.JOptionPane;
 
-import java.util.ArrayList;
-
 public class Professor extends Pessoa{
     
     private Double salario;
@@ -12,6 +10,12 @@ public class Professor extends Pessoa{
     public Double getSalario(){return this.salario;}
     public String getFormacaoAcademica(){return this.formacaoAcademica;}
 
+
+    @Override
+    public String toString(){
+        return getNome();
+    }
+    
     public void setSalario(){
         Float numero = null;
         while (numero == null) {
@@ -53,23 +57,7 @@ public class Professor extends Pessoa{
 
     public void setFormacaoAcademica(){this.formacaoAcademica = JOptionPane.showInputDialog("Formaçao academica deste professor");}
     public void resetFormacaoAcademica(){this.formacaoAcademica = JOptionPane.showInputDialog("Formaçao academica deste professor",getFormacaoAcademica());}
-
-
-    public Object ListagemProfessor(ArrayList<Professor> listprof)
-    {
-        if(listprof.size()==0){
-            JOptionPane.showMessageDialog(null, "Ainda não existe Professores Cadastrados, acesse a opção ADICIONAR PROFESSOR para Cadastrar");
-            return null;
-        }
-        Object[] al = new String[100] ;
-        for(int i = 0; i < listprof.size(); i++)
-        {
-            al[i] = listprof.get(i).nome;
-        }
-        Object opt_professors = JOptionPane.showInputDialog(null,"Escolha um Professor","Professores", JOptionPane.INFORMATION_MESSAGE, null, al, al[0]);
-        return opt_professors;
-    }
-    
+ 
     public void MostrarInfo()
     {
         JOptionPane.showMessageDialog(null,"Nome: " + this.nome + 

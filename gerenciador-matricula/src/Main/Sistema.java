@@ -27,8 +27,8 @@ public class Sistema{
     public void adicionarProfessor(Professor professor) {this.professores.add(professor);}
     
     public void getInfoAlunos() {
-        Aluno mat = new Aluno();
-        Object opt_alunos = mat.ListagemAlunos(alunos);
+        Utilidade utilidade = new Utilidade();
+        Object opt_alunos = utilidade.listagem(alunos, "Alunos", "Escolha um aluno");
         for(int i = 0; i < alunos.size(); i++)
         {
             if(opt_alunos == null) {break;}
@@ -41,17 +41,22 @@ public class Sistema{
     }
     
     public boolean verificarExisteDisci(){
-        for(int i=0;i<this.alunos.size();i++){
-            if(this.alunos.get(i).disciplinas.size()!=0){
-                return true;
-            }
-        }return false;
+        try {
+            for(int i=0;i<this.alunos.size();i++){
+                if(this.alunos.get(i).disciplinas.size()!=0){
+                    return true;
+                }
+            } 
+        }catch (Exception e) {
+            return false;
+        }
+        return false;
     }
 
-
     public void getInfoProfessores() {
-        Professor prof = new Professor();
-        Object opt_professor = prof.ListagemProfessor(professores);
+        
+        Utilidade utilidade = new Utilidade();
+        Object opt_professor = utilidade.listagem(professores, "Professores", "Escolha um professor");
         for(int i = 0; i < professores.size(); i++)
         {
             if(opt_professor == null) {break;}
@@ -84,8 +89,8 @@ public class Sistema{
     }
 
     public void ExcluirAluno() {
-        Aluno mat = new Aluno();
-        Object opt_alunos = mat.ListagemAlunos(alunos);
+        Utilidade utilidade = new Utilidade();
+        Object opt_alunos = utilidade.listagem(alunos, "Alunos", "Escolha um aluno");
         for(int i = 0; i < alunos.size(); i++)
         {
 
@@ -100,8 +105,8 @@ public class Sistema{
         }
     }
     public void ExcluirProf(){
-        Professor prof = new Professor();
-        Object opt_professor = prof.ListagemProfessor(professores);
+        Utilidade utilidade = new Utilidade();
+        Object opt_professor = utilidade.listagem(professores, "Professores", "Escolha um professor");
         for(int i = 0; i < professores.size(); i++)
         {
             if(opt_professor == null) {break;}
@@ -116,26 +121,24 @@ public class Sistema{
     }
 
     public void adicionarDici(){
-        Aluno mat = new Aluno();
-        if(professores.size() != 0)
+        Utilidade utilidade = new Utilidade();
+        Object opt_alunos = utilidade.listagem(alunos, "Alunos", "Escolha um aluno");
+        for(int i = 0; i < alunos.size(); i++)
         {
-            Object opt_alunos = mat.ListagemAlunos(alunos);
-            for(int i = 0; i < alunos.size(); i++)
+            if(opt_alunos == null) {break;}
+            else if(opt_alunos == alunos.get(i).getNome())
             {
-                if(opt_alunos == null) {break;}
-                else if(opt_alunos == alunos.get(i).getNome())
-                {
-                    alunos.get(i).setDici(professores);
-                        JOptionPane.showMessageDialog(null, "Disciplina cadastrada com sucesso.");
-                    
-                    break;
-                }
-            }    
+                alunos.get(i).setDici(professores);
+                    JOptionPane.showMessageDialog(null, "Disciplina cadastrada com sucesso.");
+                
+                break;
+            }
+        }    
     }
-    }
+
     public void RemoverDisci(){
-        Aluno mat = new Aluno();
-        Object opt_alunos = mat.ListagemAlunos(alunos);
+        Utilidade utilidade = new Utilidade();
+        Object opt_alunos = utilidade.listagem(alunos, "Alunos", "Escolha um aluno");
         for(int i = 0; i < alunos.size(); i++)//navegar pelos alunos
         {
             if(opt_alunos == null) {break;}
@@ -161,8 +164,8 @@ public class Sistema{
         }
     }
     public void AlterarDadosAluno(){
-        Aluno mat = new Aluno();
-        Object opt_alunos = mat.ListagemAlunos(alunos);
+        Utilidade utilidade = new Utilidade();
+        Object opt_alunos = utilidade.listagem(alunos, "Alunos", "Escolha um aluno");
         for(int i = 0; i < alunos.size(); i++)
         {
             if(opt_alunos == null) {break;}
@@ -200,8 +203,9 @@ public class Sistema{
         }  
     }
     public void AlterarDadosProfessor(){
-        Professor prof = new Professor();
-        Object opt_prof = prof.ListagemProfessor(professores);
+        Utilidade utilidade = new Utilidade();
+        Object opt_prof = utilidade.listagem(professores, "Professores", "Escolha um professor");
+        
         for(int i = 0; i < professores.size(); i++)
         {
             if(opt_prof == null) {break;}

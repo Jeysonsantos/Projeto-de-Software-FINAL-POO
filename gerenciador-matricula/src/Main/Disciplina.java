@@ -28,8 +28,8 @@ public class Disciplina {
     }
 
     public void setProfessor(ArrayList<Professor> Professores){
-        Professor prof = new Professor();
-        Object opt_professor = prof.ListagemProfessor(Professores);
+        Utilidade utilidade = new Utilidade();
+        Object opt_professor = utilidade.listagem(Professores, "Professores", "Escolha um professor");
         for(int i = 0; i < Professores.size(); i++)
         {
             if(opt_professor == null){break;}

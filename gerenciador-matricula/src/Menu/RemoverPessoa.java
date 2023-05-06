@@ -1,7 +1,6 @@
 package Menu;
 
 import Estados.EstadoSistema;
-import Estados.TransicaoEstados;
 import Main.Sistema;
 
 public class RemoverPessoa extends OpcaoMenu{
@@ -16,9 +15,4 @@ public class RemoverPessoa extends OpcaoMenu{
     public void executar() {
         estado.MenuRemocaoPessoa();
     }
-    
-    @Override
-    public void mudarEstado(TransicaoEstados transicaoEstados){
-        transicaoEstados.AlunoProfRemovido();
-    };
 }
