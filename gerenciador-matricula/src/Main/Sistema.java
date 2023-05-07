@@ -1,5 +1,7 @@
 package Main;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JOptionPane;
 
@@ -166,61 +168,79 @@ public class Sistema{
     public void AlterarDadosAluno(){
         Utilidade utilidade = new Utilidade();
         Object opt_alunos = utilidade.listagem(alunos, "Alunos", "Escolha um aluno");
-        for(int i = 0; i < alunos.size(); i++)
-        {
-            if(opt_alunos == null) {break;}
-            else if(opt_alunos == alunos.get(i).getNome())
-            {
-                Object[] dados_aluno = {"Nome","CPF","Email","Número de Matricula","Disciplinas", "Curso"};
-                Object dado_selecionado = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, dados_aluno,dados_aluno[0]);
-                if(dado_selecionado == "Nome"){alunos.get(i).resetNome();}
-                else if(dado_selecionado == "CPF"){alunos.get(i).resetCPF();}
-                else if(dado_selecionado == "Email"){alunos.get(i).resetEmail();}
-                else if(dado_selecionado == "Número de Matricula"){alunos.get(i).resetMatricula();}
-                else if(dado_selecionado == "Curso"){alunos.get(i).resetCurso();}
-                else if(dado_selecionado == "Disciplinas")
-                {
-                    ArrayList<Disciplina> d  = alunos.get(i).getDici();
-                    Object opt_d = alunos.get(i).ListagemDici(d);                                
-                    for(int j = 0; j < d.size(); j++)
-                    {
-                        if(opt_d == null) {break;}
-                        else if(opt_d == d.get(j).getNomeDisciplina())
-                        {
-                            Object[] opcoes = {"Nome da disciplina", "Professor responsável", "Nota"};
-                            Object opcaoSelecionada = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, opcoes, opcoes[0]);
-                            if(opcaoSelecionada == "Nome da disciplina"){d.get(j).resetNomeDisciplina();}
-                            else if(opcaoSelecionada == "Nota"){d.get(j).resetNota();}
-                            else if(opcaoSelecionada == "Professor responsável"){d.get(j).setProfessor(professores);}
+        for (int i = 0; i < alunos.size(); i++) {
+            if (opt_alunos == null) {
+                break;
+            } else if (opt_alunos == alunos.get(i).getNome()) {
+                Object[] dados_aluno = {"Nome", "CPF", "Email", "Número de Matrícula", "Disciplinas", "Curso"};
+                Object dado_selecionado = JOptionPane.showInputDialog(null, "Escolha uma opção:", "Opções", JOptionPane.INFORMATION_MESSAGE, null, dados_aluno, dados_aluno[0]);
+                Map<String, Runnable> opcoes = new HashMap<>();
+                final int index = i;
+                opcoes.put("Nome", () -> alunos.get(index).resetNome());
+                opcoes.put("CPF", () -> alunos.get(index).resetCPF());
+                opcoes.put("Email", () -> alunos.get(index).resetEmail());
+                opcoes.put("Número de Matrícula", () -> alunos.get(index).resetMatricula());
+                opcoes.put("Curso", () -> alunos.get(index).resetCurso());
+                opcoes.put("Disciplinas", () -> {
+                    ArrayList<Disciplina> d = alunos.get(index).getDici();
+                    Object opt_d = alunos.get(index).ListagemDici(d);
+        
+                    for (int j = 0; j < d.size(); j++) {
+                        if (opt_d == null) {
+                            break;
+                        } else if (opt_d == d.get(j).getNomeDisciplina()) {
+                            Object[] subOpcoes = {"Nome da disciplina", "Professor responsável", "Nota"};
+                            Object subOpcaoSelecionada = JOptionPane.showInputDialog(null, "Escolha uma opção:", "Opções", JOptionPane.INFORMATION_MESSAGE, null, subOpcoes, subOpcoes[0]);
+                            final int index2 = j;
+                            
+                            Map<String, Runnable> subOpcoesMap = new HashMap<>();
+                            subOpcoesMap.put("Nome da disciplina", () -> d.get(index2).resetNomeDisciplina());
+                            subOpcoesMap.put("Nota", () -> d.get(index2).resetNota());
+                            subOpcoesMap.put("Professor responsável", () -> d.get(index2).setProfessor(professores));
+        
+                            if (subOpcoesMap.containsKey(subOpcaoSelecionada.toString())) {
+                                subOpcoesMap.get(subOpcaoSelecionada.toString()).run();
+                            }
                             break;
                         }
-                    }   
-                }
-                JOptionPane.showMessageDialog(null, "Dados Atualizados com sucesso.");
-
-                break;
-            }
-        }  
-    }
-    public void AlterarDadosProfessor(){
-        Utilidade utilidade = new Utilidade();
-        Object opt_prof = utilidade.listagem(professores, "Professores", "Escolha um professor");
+                    }
+                });
         
-        for(int i = 0; i < professores.size(); i++)
-        {
-            if(opt_prof == null) {break;}
-            else if(opt_prof == professores.get(i).getNome())
-            {
-                Object[] dados_prof = {"Nome","CPF","Email","Salário", "Formação acadêmica"};
-                Object dado_selecionado = JOptionPane.showInputDialog(null,"Escolha uma opção:","Opções", JOptionPane.INFORMATION_MESSAGE, null, dados_prof,dados_prof[0]);
-                if(dado_selecionado == "Nome"){professores.get(i).resetNome();}
-                else if(dado_selecionado == "CPF"){professores.get(i).resetCPF();}
-                else if(dado_selecionado == "Email"){professores.get(i).resetEmail();}
-                else if(dado_selecionado == "Salário"){professores.get(i).resetSalario();}
-                else if(dado_selecionado == "Formação acadêmica"){professores.get(i).resetFormacaoAcademica();}
+                if (opcoes.containsKey(dado_selecionado.toString())) {
+                    opcoes.get(dado_selecionado.toString()).run();
+                }
+        
+                JOptionPane.showMessageDialog(null, "Dados Atualizados com sucesso.");
                 break;
             }
         }
     }
+    public void AlterarDadosProfessor() {
+        Utilidade utilidade = new Utilidade();
+        Object opt_prof = utilidade.listagem(professores, "Professores", "Escolha um professor");
+    
+        if (opt_prof != null) {
+            for (int i = 0; i < professores.size(); i++) {
+                if (opt_prof == professores.get(i).getNome()) {
+                    final int index = i;
+                    HashMap<String, Runnable> opcoesDados = new HashMap<>();
+                    opcoesDados.put("Nome", () -> professores.get(index).resetNome());
+                    opcoesDados.put("CPF", () -> professores.get(index).resetCPF());
+                    opcoesDados.put("Email", () -> professores.get(index).resetEmail());
+                    opcoesDados.put("Salário", () -> professores.get(index).resetSalario());
+                    opcoesDados.put("Formação acadêmica", () -> professores.get(index).resetFormacaoAcademica());
+    
+                    Object[] dados_prof = opcoesDados.keySet().toArray();
+                    Object dado_selecionado = JOptionPane.showInputDialog(null, "Escolha uma opção:", "Opções", JOptionPane.INFORMATION_MESSAGE, null, dados_prof, dados_prof[0]);
+    
+                    if (dado_selecionado != null) {
+                        Runnable acao = opcoesDados.get(dado_selecionado);
+                        acao.run();
+                    }
+                    break;
+                }
+            }
+        }
+    }    
     }
     

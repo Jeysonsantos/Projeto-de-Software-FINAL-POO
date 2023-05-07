@@ -15,7 +15,10 @@ public class Pessoa{
     public void setCPF(String cpf){this.cpf = cpf;}
 
     
-    public void resetNome(){this.nome = JOptionPane.showInputDialog("Nome",getNome());}
+    public void resetNome(){
+        String nome = JOptionPane.showInputDialog("Nome",getNome());
+        if(nome != null){setNome(nome);}
+    }
     
     public void resetCPF(){
         

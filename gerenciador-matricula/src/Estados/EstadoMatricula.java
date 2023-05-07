@@ -20,13 +20,19 @@ public class EstadoMatricula implements EstadoSistema{
         Aluno novoAluno = new Aluno();
         
         String nome = JOptionPane.showInputDialog("Digite o NOME do aluno:");
-        novoAluno.setNome(nome);
+        if (!nome.isEmpty()) {
+            novoAluno.setNome(nome);
+        } else {
+            JOptionPane.showMessageDialog(null, "Nome inválido.");
+            return;
+        }
+
         
         String cpf = null;
         while (cpf == null) {
             String input = JOptionPane.showInputDialog("Digite o CPF do aluno:");
             if (input == null) {
-                break;
+                return;
             }
             if (input.matches("\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}")) {
                 cpf = input;
@@ -59,7 +65,7 @@ public class EstadoMatricula implements EstadoSistema{
         while (email == null) {
             String input = JOptionPane.showInputDialog("Digite o e-mail do aluno:");
             if (input == null) {
-                break;
+                return;
             }
             if (input.matches("[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+")) {
                 email = input;
@@ -70,7 +76,11 @@ public class EstadoMatricula implements EstadoSistema{
         }
 
         String curso = JOptionPane.showInputDialog("Digite o curso do aluno:");
-        novoAluno.setCurso(curso);
+        if (curso == null) {
+            return;
+        }else{
+            novoAluno.setCurso(curso);
+        }
         
         sistema.setNumAlunos();
         sistema.AddAluno(novoAluno);
@@ -101,13 +111,18 @@ public class EstadoMatricula implements EstadoSistema{
     public void MenuAdicaoProfessor() {
         Professor novoProfessor = new Professor();
         String nome = JOptionPane.showInputDialog("Digite o NOME do Professor:");
-        novoProfessor.setNome(nome);
+        if (!nome.isEmpty()) {
+            novoProfessor.setNome(nome);
+        } else {
+            JOptionPane.showMessageDialog(null, "Nome inválido.");
+            return;
+        }
         
         String cpf = null;
         while (cpf == null) {
             String input = JOptionPane.showInputDialog("Digite o CPF do Professor:");
             if (input == null) {
-                break;
+                return;
             }
             if (input.matches("\\d{3}\\.\\d{3}\\.\\d{3}\\-\\d{2}")) {
                 cpf = input;
@@ -121,7 +136,7 @@ public class EstadoMatricula implements EstadoSistema{
         while (email == null) {
             String input = JOptionPane.showInputDialog("Digite o e-mail do Professor:");
             if (input == null) {
-                break;
+                return;
             }
             if (input.matches("[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+")) {
                 email = input;
